@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 py-4" *ngIf="!loading">
+            <img class="w-100 h-75 mt-4" src="{{data?.image}}" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="mt-5 ml-4">
+               <h2>{{data?.title}}</h2>
+               <div >
+                   <h4><span>Category:</span> {{data?.category}}</h4>
+                   <h4><span>rating count:</span> {{data?.rating.count}}</h4>
+                   <h4><span>rate:</span> {{data?.rating.rate}}</h4>
+                   <app-rating-component [rate]="rating"></app-rating-component>
+                   <h4><span>price:</span> {{data?.price}}L.E</h4>
+                   <h5 class="welcome w-75 ">{{data?.description}}</h5>
+               </div>
+            </div>
+       
+        </div>
+       </div>
+    <div>
+        <div class="text-center">
+            <app-spinner  *ngIf="loading"></app-spinner>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

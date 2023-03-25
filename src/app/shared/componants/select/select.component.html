@@ -1,0 +1,8 @@
+
+     <label for="">{{title}}</label>
+     <select class="form-control" >
+        <option value="all" *ngIf="all" selected>All</option>
+    <option value="{{option}}" *ngFor="let option of data"  [selected]='option === select' >{{option}}</option>
+
+
+     </select>

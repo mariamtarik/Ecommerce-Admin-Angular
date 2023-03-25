@@ -1,0 +1,221 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="my-4 w-25 pr-3 text">
+      <!-- <app-select
+        [data]="categoris"
+        [title]="'categories'"
+        (selectedValue)="filterCategory($event)"
+      ></app-select> -->
+    </div>
+    <div class="cartBox">
+      <div class="w-25 my-2">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn addProduct text-white"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          Add Product
+        </button>
+      </div>
+      <table class="table table-striped text-center responsive-table" *ngIf="!loading">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>category</th>
+            <th>price</th>
+            <th>update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td><img src="{{ product.image }}" alt="picture" /></td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button
+              type="button"
+              (click)="updateForm(product)"
+              class="btn btn-warning text-white"
+              data-toggle="modal"
+              data-target="#exampleModal1"
+              
+            >
+             Update
+            </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div
+    class="text-center w-100 d-flex align-items-center justify-content-center"
+    *ngIf="loading"
+  >
+    <app-spinner></app-spinner>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  data-backdrop="static" data-keyboard="false"
+>
+  <div class="modal-dialog" style="max-width: 900px !important ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]='addProduct' (ngSubmit)="AddProduct()">
+            <div class="row">
+              <div class="col-md-4">
+                <label> Title</label>
+                <input
+                  type="text"
+                  placeholder="enter title"
+                  class="form-control"
+                  formControlName="title"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>price</label>
+                <input
+                  type="number"
+                  placeholder="enter price"
+                  class="form-control"
+                  formControlName="price"
+                />
+              </div>
+              <div class="col-md-4">
+                <!-- <label >categories</label> -->
+                <app-select
+                  [data]="categoris"
+                  [title]="'categories'"
+                  [select]="addProduct.value.category"
+                  (change)="getSelected($event)"
+                  [all]="false"
+                ></app-select>
+              </div>
+              <div class="col-md-4">
+                <label>image</label><br>
+                <img [src]="imageUrl" alt="" style="max-height: 80px; max-width: 100%;">
+                <input type="file" placeholder="enter image" class="form-control" (change)="getImagePath($event)"/>
+              </div>
+              <div class="col-md-8">
+                <label>Description</label>
+                <textarea 
+                  placeholder="enter description"
+                  class="form-control"
+                  formControlName="description"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn addProduct text-white">
+                Add Product
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel1"
+  aria-hidden="true"
+  data-backdrop="static" data-keyboard="false"
+>
+  <div class="modal-dialog" style="max-width: 900px !important ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">update Product</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="restForm()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]='addProduct' (ngSubmit)="updateProduct()">
+            <div class="row">
+              <div class="col-md-4">
+                <label> Title</label>
+                <input
+                  type="text"
+                  placeholder="enter title"
+                  class="form-control"
+                  formControlName="title"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>price</label>
+                <input
+                  type="number"
+                  placeholder="enter price"
+                  class="form-control"
+                  formControlName="price"
+                />
+              </div>
+              <div class="col-md-4">
+                <!-- <label >categories</label> -->
+                <app-select
+                  [data]="categoris"
+                  [title]="'categories'"
+                  [select]="addProduct.value.category"
+                  (change)="getSelected($event)"
+                  [all]="false"
+                ></app-select>
+              </div>
+              <div class="col-md-4">
+                <label>image</label><br>
+                <img [src]="imageUrl" alt="" style="max-height: 80px; max-width: 100%;">
+                <input type="file" placeholder="enter image" class="form-control" (change)="getImagePath($event)"/>
+              </div>
+              <div class="col-md-8">
+                <label>Description</label>
+                <textarea 
+                  placeholder="enter description"
+                  class="form-control"
+                  formControlName="description"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn addProduct text-white">
+                update Product
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="content mt-5">
+          <h1 class="pt-5 fs-2x bolder">
+            Let's Create Your<br />
+            Own <span class="fashion">Fashion</span> Style
+          </h1>
+          <p class="pt-2 para">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta eum
+            corporis ullam amet natus. Corporis, sequi quasi? Aspernatur, modi
+            reprehenderit.
+          </p>
+          <button class="btn product"><a class="nav-link text-white" routerLink="/product" >All Products</a></button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img class="w-100 image" src="./assets/images/fashion.png" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cate">
+  <h2 class="text-center pt-3"><span>Top</span> Categories</h2>
+  <p class="text-center w-50 m-auto">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis porro
+    laudantium harum amet eligendi mollitia pariatur minima facere tempora
+    soluta!
+  </p>
+  <div class="container py-5">
+    <div class="row" *ngIf="categoris">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <div class="contentCate">
+                <img class="imageCate" src="./assets/images/electro.jfif" alt="">
+                <a [routerLink]="['/category', keyword]" >
+                    <h5 (click)="getcate($event)" >{{categoris[0]}}</h5>
+                </a>
+                
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="contentCate">
+                <img class="imageCate" src="./assets/images/jwellery.jpg" alt="">
+                <a [routerLink]="['/category', keyword]" >
+                    <h5 (click)="getcate($event)" >{{categoris[1]}}</h5>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="contentCate">
+                <img class="imageCate" src="./assets/images/man.jpg" alt="">
+                <a [routerLink]="['/category', keyword]" >
+                    <h5 (click)="getcate($event)" >{{categoris[2]}}</h5>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="contentCate">
+                <img class="imageCate" src="./assets/images/womens.webp" alt="">
+                <a [routerLink]="['/category', keyword]" >
+                    <h5 (click)="getcate($event)" >{{categoris[3]}}</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="my-5">
+ <div class="container">
+        <h2 class="p-3">Best Seller</h2>
+        <div class="row">
+<div class="col-md-4 px-4">
+    <div class="best">
+        <img class="w-100" src="./assets/images/coat.jpg" alt="">
+        <div class="p-2 info">
+            <h4  class="py-2 kind">Mens Cotton Jacket</h4>
+            <div class="d-flex justify-content-between ">
+                <div>
+                   <h5 class="price"> 55.99</h5> 
+                </div>
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="col-md-4 px-4">
+    <div class="best">
+        <img class="w-100" src="./assets/images/coatWoman.jpg" alt="">
+        <div class="p-2 info">
+            <h4  class="py-2 kind">Rain Jacket Women</h4>
+            <div class="d-flex justify-content-between ">
+                <div>
+                   <h5 class="price">39.99</h5> 
+                </div>
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="col-md-4 px-4">
+    <div class="best">
+        <img class="w-100" src="./assets/images/t-shirt.jpg" alt="">
+        <div class="p-2 info">
+            <h4  class="py-2 kind"> T Shirt Casual Cotton</h4>
+            <div class="d-flex justify-content-between ">
+                <div>
+                   <h5 class="price">12.99</h5> 
+                </div>
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+        </div>
+    </div>
+</section>
